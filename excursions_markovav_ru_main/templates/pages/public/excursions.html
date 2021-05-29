@@ -8,20 +8,30 @@
         }
     </style>
     <div class="container">
-        <div class="card-deck">
-            {% for excursion in excursions %}
-                <div class="card col-lg-4 mt-3 pl-0 pr-0">
-                    <img class="card-img-top" src="{{ excursion.image_link }}" alt="Excursion image">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ excursion.name }} - {{ excursion.datetime }}</h5>
-                        <p class="card-text">{{ excursion.description }}</p>
+        {% for row in excursions %}
+            <div class="card-deck">
+                {% for excursion in row %}
+                    <div class="card col-lg-4 mt-3 pl-0 pr-0">
+                        <img class="card-img-top" src="{{ excursion.image_link }}" alt="Excursion image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ excursion.name }} - {{ excursion.datetime }}</h5>
+                            <p class="card-text">{{ excursion.description }}</p>
+                        </div>
+                        {% if excursion.free_places > 0 %}
+                            <a href="?jointo={{ excursion.name_date }}" class="btn btn-success">Записаться</a>
+                        {% else %}
+                            <a href="" class="btn btn-secondary" disabled>Нет мест</a>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                            <a href="?delete={{ excursion.name_date }}" class="btn btn-danger">Удалить</a>
+                        {% endif %}
+                        <div class="card-footer">
+                            <small class="text-muted">{{ excursion.free_places }} свободных мест</small>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <small class="text-muted">{{ excursion.free_places }} свободных мест</small>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
 
