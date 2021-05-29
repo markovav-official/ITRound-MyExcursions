@@ -1,0 +1,43 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark override-color">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'images/logo.png' %}" width="50" height="50" alt="" style="border-radius: 10px;">
+            <span class="ml-2 mr-3" style="vertical-align: middle;">MyExcursions</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <style>
+            .btn {
+                line-height: 1.2 !important;
+            }
+        </style>
+        <li class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="form-inline mx-2 my-1">
+                    <a class="btn btn-secondary btn-block" href="{% url 'index' %}">Главная</a>
+                </li>
+                <li class="form-inline mx-2 my-1">
+                    <a class="btn btn-secondary btn-block" href="{% url 'excursions' %}">Экскурсии</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="form-inline mx-2 my-1">
+                        <a class="btn btn-secondary btn-block" href="{% url 'add_excursions' %}">Добавить экскурсию</a>
+                    </li>
+                {% endif %}
+            </ul>
+            {% if request.user.is_authenticated %}
+                <div class="form-inline mr-sm-2">
+                    <a style="margin: auto;" href="{% url 'logout' %}"><kbd>{{ request.user.username }}</kbd></a>
+                </div>
+            {% else %}
+                <div class="form-inline mr-sm-2">
+                    <a style="margin: auto;" class="btn btn-secondary btn-block"
+                       href="{% url 'login' %}">Авторизация</a>
+                </div>
+            {% endif %}
+    </div>
+</nav>

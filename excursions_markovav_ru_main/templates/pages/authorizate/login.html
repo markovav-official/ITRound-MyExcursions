@@ -1,0 +1,130 @@
+{% load static %}
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+    @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+    body {
+        background: url("{% static 'images/bg_main.png' %}") 50%/cover;
+    }
+
+    .header {
+        position: absolute;
+        top: calc(50% - 125px);
+        left: calc(50% - 113px);
+        z-index: 2;
+        font-weight: bolder;
+    }
+
+    .header div {
+        float: left;
+        color: white !important;
+        font-family: 'Exo', sans-serif;
+        font-size: 35px;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .login {
+        position: absolute;
+        top: calc(50% - 50px);
+        left: calc(50% - 125px);
+        height: 150px;
+        width: 350px;
+        padding: 10px;
+        z-index: 2;
+    }
+
+    .login input[type=text] {
+        width: 250px;
+        height: 30px;
+        background: #fff;
+        border: 1px solid #000;
+        border-radius: 2px;
+        color: #000;
+        font-family: 'Exo', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 4px;
+        text-align: center;
+    }
+
+    .login input[type=password] {
+        width: 250px;
+        height: 30px;
+        background: #fff;
+        border: 1px solid #000;
+        border-radius: 2px;
+        color: #000;
+        font-family: 'Exo', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 4px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .login input[type=submit] {
+        width: 250px;
+        height: 35px;
+        background: #fff;
+        border: 1px solid #000;
+        cursor: pointer;
+        border-radius: 2px;
+        color: #000;
+        font-family: 'Exo', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        padding: 6px;
+        margin-top: 10px;
+    }
+
+    .login input[type=submit]:hover {
+        opacity: 0.8;
+    }
+
+    .login input[type=submit]:active {
+        opacity: 0.6;
+    }
+
+    .login input[type=text]:focus {
+        outline: none;
+        border: 1px solid orangered;
+    }
+
+    .login input[type=password]:focus {
+        outline: none;
+        border: 1px solid orangered;
+    }
+
+    .login input[type=submit]:focus {
+        outline: none;
+    }
+</style>
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<!-- Custom styles for this template -->
+
+<body>
+<div class="header">
+    <a href="{% url 'index' %}">
+        <div>Авторизация</div>
+    </a>
+</div>
+<br>
+<div class="login">
+    <form class="w-100" action="{{ action }}" method="post">
+        {% csrf_token %}
+        {% for field in loginform.visible_fields %}
+            <div class="form-group form-inline mb-2">{{ field }}</div>
+        {% endfor %}
+        <input type="submit" class="btn btn-success" value="Войти">
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" crossorigin="anonymous"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" crossorigin="anonymous"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"></script>
+</body>
