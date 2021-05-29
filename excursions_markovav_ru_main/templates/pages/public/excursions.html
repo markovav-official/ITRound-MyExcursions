@@ -6,6 +6,12 @@
         body {
             background: url("{% static 'images/bg_excursions.png' %}") 50%/cover fixed;
         }
+
+        @media (min-width: 992px) {
+            .col-lg-4 {
+                max-width: 32%;
+            }
+        }
     </style>
     <div class="container">
         {% for row in excursions %}
