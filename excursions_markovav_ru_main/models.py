@@ -12,7 +12,7 @@ class Excursion(models.Model):
     def to_qr(self):
         data = [
             'Экскурсия: ' + self.name,
-            'Дата и время: ' + self.datetime,
+            'Время и дата: ' + self.datetime,
             'Запись: ' + '%reg_date%'
         ]
         return ' \n'.join(data)

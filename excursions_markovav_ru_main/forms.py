@@ -41,7 +41,7 @@ class AddExcursionForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control text-center',
-                'placeholder': 'Дата и время экскурсии (mm:hh DD.MM.YYYY)',
+                'placeholder': 'Время и дата экскурсии (mm:hh DD.MM.YYYY)',
             }
         )
     )

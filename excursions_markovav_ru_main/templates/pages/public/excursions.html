@@ -20,7 +20,7 @@
                     <div class="card col-lg-4 mt-3 pl-0 pr-0 mx-auto">
                         <img class="card-img-top" src="{{ excursion.image_link }}" alt="Excursion image">
                         <div class="card-body">
-                            <h5 class="card-title">{{ excursion.name }} - {{ excursion.datetime }}</h5>
+                            <h5 class="card-title">{{ excursion.name }} <br> {{ excursion.datetime }}</h5>
                             <p class="card-text">{{ excursion.description }}</p>
                         </div>
                         {% if excursion.free_places > 0 %}
