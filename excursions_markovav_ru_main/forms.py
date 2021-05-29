@@ -22,3 +22,46 @@ class PassLoginForm(forms.Form):
             }
         )
     )
+
+
+class AddExcursionForm(forms.Form):
+    name = forms.CharField(
+        max_length=32,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control text-center',
+                'placeholder': 'Название экскурсии',
+            }
+        )
+    )
+    datetime = forms.CharField(
+        max_length=32,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control text-center',
+                'placeholder': 'Дата и время экскурсии (mm:hh DD.MM.YYYY)',
+            }
+        )
+    )
+    image_link = forms.CharField(
+        max_length=10000,
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control text-center',
+                'placeholder': 'Ссылка на изображение',
+            }
+        )
+    )
+    description = forms.CharField(
+        max_length=10000,
+        required=True,
+        widget=forms.Textarea(
+            attrs={
+                'class': 'form-control text-center',
+                'placeholder': 'Описание экскурсии',
+            }
+        )
+    )

@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Excursion(models.Model):
-    name = models.TextField()
+    name = models.TextField(primary_key=True)
     image_link = models.TextField()
-    date = models.DateField()
-    time = models.TimeField()
+    datetime = models.TextField()
     free_places = models.IntegerField()
+    description = models.TextField()

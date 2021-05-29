@@ -4,14 +4,23 @@
 {% block content %}
     <style>
         body {
-            background: url("{% static 'images/bg_main.png' %}") 50%/cover;
+            background: url("{% static 'images/bg_excursions.png' %}") 50%/cover;
         }
     </style>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="mt-lg-5 text-center text-white">Экскурсии</h1>
-            </div>
+        <div class="card-deck">
+            {% for excursion in excursions %}
+                <div class="card col-lg-4 mt-3 pl-0 pr-0">
+                    <img class="card-img-top" src="{{ excursion.image_link }}" alt="Excursion image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ excursion.name }} - {{ excursion.datetime }}</h5>
+                        <p class="card-text">{{ excursion.description }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">{{ excursion.free_places }} свободных мест</small>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
@@ -31,7 +40,9 @@
 
     <script>
         $(function () {
-            $("#datetimepicker").datetimepicker();
+            $("#id_date").datetimepicker({
+                format: 'H:i d.m.Y',
+            });
         });
     </script>
 {% endblock %}
